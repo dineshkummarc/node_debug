@@ -67,7 +67,8 @@ fu.staticHandler = function (filename) {
     }
 
     puts("loading " + filename + "...");
-    var promise = node.fs.cat(filename, encoding);
+    var path = __filename.match(/(.*\/)/)[0];
+    var promise = node.fs.cat(path + filename, encoding);
 
     promise.addCallback(function (data) {
       body = data;
